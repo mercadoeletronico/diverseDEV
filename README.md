@@ -31,8 +31,8 @@ Para extrairmos essas informacao da despesa atraves de uma imagem iremos utiliza
   }
   ```
 * Em seguida vamos extrair as informacoes da despesa
-  * Tipo da despesa
-    ``prompt: que tipo de despesa é essa, entre: hospedagem, transporte, viagem, alimentação ou Outros.``   
+  * Categoria da despesa
+    ``prompt: que categoria de despesa é essa, entre: hospedagem, transporte, viagem, alimentação ou Outros.``   
   * Valor total da despesa
     ``prompt: qual o valor dessa despesa``
   * Descricao da despesa
@@ -42,24 +42,49 @@ Para extrairmos essas informacao da despesa atraves de uma imagem iremos utiliza
   ```
   {
     "Total": 99.00
-    "Tipo": "HOSPEDAGEM",
+    "Categoria": "HOSPEDAGEM",
     "Descricao": "Descricao do comprovante",
-    "Status": "PENDENTE"
+    "Status": "SUBMETIDO"
   }
-* Criar endpoint de consulta de despesas para que o Financeiro consiga visualizar todas as notas PENDENTES
+* Criar endpoint de consulta de despesas para que o Financeiro consiga visualizar todas as notas SUBMETIDO
 * Criar endpoint para que o Financeiro consiga mudar o status da DESPESA para PAGA
 
 ---
 
-## :zap: Desafio nº 2 - Motor de Encaminhamento
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen boo
+## :zap: Desafio nº 2 - Motor de Aprovação
+Seguindo no contexto de reembolso, uma outra parte crucial do controle de pagamento de reembolsos e o seu processo de aprovacao.
+Essa etapa muitas vezes se revela trabalhosa pois demanda que o departamento financeiro envie manualmente esse documento para o gestor que em muitos casos essa informacao nao esta clara e pode impactar negativamente na eficiência operacional.
 
 ### :clipboard: Detalhe técnico
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen boo
+Para resolvermos esse problema precisamos criar um motor de aprovacao.
+A ideia geral e que ao criarmos o documento de reembolso, descrito no desafio anterior seja executado uma rotina que determine se devemos APROVAR ou RECUSAR automaticamente.
+Com isso podemos aplicar regras que agilizariam em muito o nosso processo.
+Essa rotina devera alterar o status do documento para que esteja visivel para o departamento financeiro.
+
+Caso nenhuma regra seja atendida, o financeiro devera manualmente APROVAR ou RECUSAR.
+e o status devera ser "EM APROVACAO"
 
 ### :rocket: Proposta de solução
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen boo
+* Criar a API para criacao do documento de Reembolso.
+  * Quando o documento for criado, devemos executar o motor de aprovacao.
+  Segue abaixo a estrutura de tabela de Decisao. 
 
+   | Valor do Reembolso| Categortia            | Acao    |
+   |-|-|-|
+   | Até R$100	       | Todas as categorias   | Aprovar
+   | 101 - 500	       | Alimentação           | Aprovar | 
+   | 101 - 500		     | Transporte            | Aprovar |
+   | Acima de R$1.000	 | Todas as categorias	 | Recusar |
+  
+  Lembrando que ela pode sofrer alteracoes para adequacao do processo da empresa.
+  Esperamos que essa estrutura deva ser mantida em um banco de dados
+
+* Criar API para APROVAR o documento.
+  * Para a aprovacao manual para ser utilizado pelo financeiro
+* Criar API para RECUSAR o documento.
+  * Para a recusa manual para ser utilizado pelo financeiro
+* Criar API para que o financeiro possa listar os documentos por status
+  * Sera util para que consigam verificar quais documentos necessitam de aprocacao manual.
 ---
 
 ### Enjoy!
