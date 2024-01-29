@@ -55,7 +55,7 @@ Para extrairmos essas informações da despesa através de uma imagem, iremos ut
 
 ## :zap: Desafio 2 - Motor de Aprovação
 Seguindo no contexto de reembolso, outra parte crucial do controle de pagamento de reembolsos é o seu processo de aprovação.
-Essa etapa muitas vezes se revela trabalhosa, pois demanda que o departamento financeiro envie manualmente esse documento para o gestor, que em muitos casos essa informação não está clara e pode impactar negativamente na eficiência operac
+Essa etapa muitas vezes se revela trabalhosa, pois demanda que o departamento financeiro envie manualmente esse documento para o gestor, que em muitos casos essa informação não está clara e pode impactar negativamente na eficiência operacional.
 
 ### :clipboard: Detalhe técnico
 Para resolvermos esse problema, precisamos criar um motor de aprovação.
