@@ -71,7 +71,7 @@ Com isso, o financeiro deverá manualmente APROVAR ou RECUSAR essa despesa.
   * Quando o documento for criado, devemos executar o motor de aprovação.
   Esse processo deverá seguir uma tabela de decisão semelhante a essa.
 
-   | Valor do Reembolso| Categortia            | Acao    |
+   | Valor do Reembolso| Categoria            | Acao    |
    |-|-|-|
    | Até R$100	       | Todas as categorias   | Aprovar
    | 101 - 500	       | Alimentação           | Aprovar | 
